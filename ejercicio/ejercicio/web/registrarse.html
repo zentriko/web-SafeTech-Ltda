@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>registrarse</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="{% static '/registrars.css' %}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    
+   
+   
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+
+    <form action="{% url 'registro_cliente' %}" method="POST" id="form" novalidate>
+        {% csrf_token %}
+            <h1>Registro</h1>
+            {{ form.as_p }}
+            
+            <label for="">Repetir Contraseña</label>
+                <input type="password" name="contrasena2" id="rpass" ><span class="invalid-input"></span>
+
+                
+                
+
+                <p>Por favor prueba una Contraseña de al menos 8 caracteres </p>
+                <div class="check">
+                    <label>
+                        <input type="checkbox" id="miCheckbox" name="miCheckbox">
+                    </label>
+                </div>
+                
+                </div>
+                <div class="lad">
+                    <p>He leido los terminos y condiciones.</p>
+                </div>
+        
+                <button type="submit"id="boton-registrarse">Registrarse</button>
+            
+
+            <p class="warnings" id="warnings"></p>
+        </div>
+    </form>
+    <script src="{% static 'regist.js' %}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</body>
+</html>

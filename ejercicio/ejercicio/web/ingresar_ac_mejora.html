@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="{% static 'ingresar_ac_mejora.css' %}" rel="stylesheet" type="text/css" media="screen"/>
+   
+    <form action="{% url 'ingresar_act' %}" method="POST" id="form" novalidate>
+        {% csrf_token %}
+            <h1>Seleccion de Actividad</h1>
+
+            <label for="planificar_visita">Tipo de Actividad:</label>
+
+            <select id="planificar_visita" name="tipo_visita">
+                <option value="op">Seleccione una opción</option>
+                <option value="opcion1">Lista de Clientes</option>
+                <option value="opcion2">Ingresar Actividad</option>
+                <option value="opcion3">Revisar Actividad</option>
+            </select>
+            
+            <div id="inventario_opcion1" style="display: none;">
+                <!-- Contenido del inventario para la Opción 1 -->
+                <!-- ... (código existente) ... -->
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Fecha_registro</th>
+                            <!-- Agrega más columnas  -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cliente in cliente %}
+                        <tr>
+                            <td>{{ cliente.id_cliente }}</td>
+                            <td>{{ cliente.nombre }}</td>
+                            <td>{{ cliente.apellido }}</td>
+                            <td>{{ cliente.fecha_registro }}</td>
+                            <!-- Agrega más columnas según tus necesidades -->
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+            
+            <div id="Ingresar_Actividad" style="display: none;"> <!-- Nombre de ID actualizado -->
+                <!-- Contenido del inventario para la Opción 2 -->
+                <!-- ... (código existente) ... -->
+                <h1>Ingresar Actividad</h1>
+                <label for="">Estado</label>
+                <input type="text" name="estado" id="estado"><span class="invalid-input"></span>
+            
+                <label for="">Nombre de actividad</label>
+                <input type="text" name="nombre_act" id="nombre_act"><span class="invalid-input"></span>
+
+                <label for="">Nombre de Cliente</label>
+                <input type="text" name="nombre_cliente" id="nombre_cliente"><span class="invalid-input"></span>
+            
+            
+                <label for="">Fecha</label>
+                <input type="date" name="fecha" id="fecha"><span class="invalid-input"></span>
+
+                <label for="">tipo de empresa</label>
+                <input type="text" name="tipo_empresa" id="tipo_empresa"><span class="invalid-input"></span>
+
+                <label for="">Nombre de Empresa</label>
+                <input type="text" name="nombre_empresa" id="nombre_empresa"><span class="invalid-input"></span>
+            
+            
+                <button type="submit" id="boton-registrarse">Solicitar</button>
+
+            </div>
+            
+            <div id="Revisar_Actividad" style="display: none;">
+                <!-- Contenido del inventario para la Opción 3 -->
+               
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>ID_actividad</th>
+                            <th>Estado</th>
+                            <th>nombre_act</th>
+                            <th>fecha</th>
+                            <th>administrador_id</th>
+                            <th>cheklist_id</th>
+                            <th>cliente_id</th>
+                            <th>profesional_id</th>
+                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for actividad in actividad %}
+                        <tr>
+                            <td>{{ actividad.id_actividad }}</td>
+                            <td>{{ actividad.estado }}</td>
+                            <td>{{ actividad.nombre_act }}</td>
+                            <td>{{ actividad.fecha }}</td>
+                            <td>{{ actividad.administrador_id}}</td>
+                            <td>{{ actividad.checklist_id }}</td>
+                            <td>{{ actividad.cliente_id}}</td>
+                            <td>{{ actividad.profesional_id}}</td>
+                    
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+    
+    </form>
+    <script>
+var select = document.getElementById("planificar_visita");
+var inventarioOpcion1 = document.getElementById("inventario_opcion1");
+var inventarioOpcion2 = document.getElementById("Ingresar_Actividad");
+var inventarioOpcion3 = document.getElementById("Revisar_Actividad");
+
+select.addEventListener("change", function () {
+    if (select.value === "opcion1") {
+        inventarioOpcion1.style.display = "block";
+        inventarioOpcion2.style.display = "none";
+        inventarioOpcion3.style.display = "none";
+    } else if (select.value === "opcion2") {
+        inventarioOpcion1.style.display = "none";
+        inventarioOpcion2.style.display = "block";
+        inventarioOpcion3.style.display = "none";
+    } else if (select.value === "opcion3") {
+        inventarioOpcion1.style.display = "none";
+        inventarioOpcion2.style.display = "none";
+        inventarioOpcion3.style.display = "block";
+    } else {
+        inventarioOpcion1.style.display = "none";
+        inventarioOpcion2.style.display = "none";
+        inventarioOpcion3.style.display = "none";
+    }
+});
+
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script>
+    
+        var form = document.getElementById("form");
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+    
+            
+            setTimeout(function() {
+              
+    
+                // Simulación de éxito 
+                Swal.fire({
+                    title: "Reporte exitoso",
+                    text: "¡Tu reporte ha sido completado con éxito!",
+                    icon: "success",
+                    timer: 1500, // Duración en milisegundos
+                    showConfirmButton: false // Oculta el botón "OK"
+                }).then(() => {
+                    // Redirigir a la página deseada después de cerrar el SweetAlert
+                    form.submit(); // enviar al formulario al servidor
+                });
+    
+                // Si ocurrió un error, puedes mostrar un mensaje de error 
+                
+            }, 1000); // Tiempo de espera simulado (1 segundo)
+        });
+
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Glassmorphism login Form Tutorial in html css</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="{% static '/contacts.css'%}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+ 
+   
+   
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form class="log">
+        <h3>Contacto</h3>
+
+        <label for="username"></label>
+        <input type="username" placeholder="Nombre" id="username">
+
+        <label for="password"></label>
+        <input type="Email" placeholder="Email" id="Email">
+
+        
+       
+         <textarea name="introducir_mensaje" class="texto_mensaje" id="mensaje" required="obligatorio" placeholder="Deja aquí tu comentario..."></textarea>
+  
+        
+
+ 
+        <a href="/iniciar.html" class="boton-ingresar">Enviar</a>
+    
+    </form>
+</body>
+</html>

@@ -1,0 +1,275 @@
+* {
+    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url(imagenes/fondo1.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+header {
+    background-color: #161515;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 100px;
+}
+
+.span {
+    color: rgb(199, 23, 10);
+}
+
+.navigation a {
+    color: #ced1da;
+    font-size: 1.2em;
+    text-decoration: none;
+    padding-left: 30px;
+    font-weight:400
+}
+
+    .navigation a:hover {
+        color: rgb(233, 176, 20);
+    }
+
+
+.boton-enlace {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    position: relative;
+    left: 80px;
+}
+
+    .boton-enlace:hover {
+        background-color: #0056b3;
+    }
+
+
+
+.contenedor {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 150px;
+}
+
+    /* Estilos para el t�tulo */
+    .contenedor h1 {
+        font-size: 60px;
+        margin: 0;
+        color: #fcfbfb;
+    }
+
+    /* Estilos para el p�rrafo */
+
+
+
+
+
+
+.boton-cuenta{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    position: relative;
+    left: 80px;
+    position: relative;
+    left: 755px;
+}
+
+
+.poro2 {
+    width: auto;
+    height: auto;
+    position: relative;
+    left: 1250px;
+    bottom: 640px;
+}
+
+.ase{
+    
+    margin-left: 1200px;
+  
+}
+.boton2{
+
+    size: 20px;
+    display: inline-block;
+    padding: 20px 30px;
+    background-color: #070707;
+    color: rgb(250, 249, 249);
+    text-decoration: none;
+    border-radius: 5px;
+    position: relative;
+    bottom: 99px;
+}
+
+.contenedor3{
+    position: relative;
+    top:305px;
+}
+
+.boton3{
+    size: 20px;
+    display: inline-block;
+    padding: 20px 30px;
+    background-color: #070707;
+    color: rgb(250, 249, 249);
+    text-decoration: none;
+    border-radius: 5px;
+    position: relative;
+    top:220px;
+}
+.repot{
+    
+    margin-left: 1200px;
+  
+}
+.contenedor2 p{
+    margin-left: 45px;
+    margin-top: 60px;
+    color: white;
+    
+    
+}
+
+.contenedor3 p{
+    margin-left: 45px;
+    margin-top: 60px;
+    color: white;
+    
+    
+}
+h1{
+    color: white;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(248, 247, 247, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+/* Estilo para el encabezado de la tabla */
+h1 {
+    position: relative;
+    left: 700px;
+}
+.boton-eliminar{
+    display: inline-block;
+    padding: 6px 8px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.boton-agregar{
+    display: inline-block;
+    padding: 10px 12px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.formulario {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+button[type="button"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}

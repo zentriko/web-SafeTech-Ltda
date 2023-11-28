@@ -1,0 +1,255 @@
+:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url(imagenes/fondo1.jpg);
+}
+
+form{
+    height: auto;
+    width: auto;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #000000;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(8, 8, 8, 0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #070707;
+}
+button{
+    margin-top: 50px;
+    width: 100%;
+    background-color:white;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    top: 10px;
+}
+
+.log img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    position: relative;
+    left: 200px;
+}
+.log h3{
+    font-size: 29px;
+}
+.log a{
+    display: flex;
+    justify-content: center;
+align-items: center;
+}
+
+.check{
+    width: 16px;
+    height: auto;
+}
+.lad{
+    width: AUTO;
+    height: 10px;
+    position: relative;
+    left: 30px;
+    bottom: 530px;
+}
+
+.linea-superior,
+.linea-inferior {
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.contenedor {
+    position: relative;
+    padding: 20px 0;
+}
+
+.centrado-entre-lineas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 10px;
+}
+.contenedor {
+    display: flex;
+    align-items: center;
+}
+
+.linea {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #0a0a0a;
+}
+
+.texto {
+    padding: 0 10px;
+}
+
+
+
+
+
+/* Define el estilo para los campos de entrada inválidos */
+.invalid-input {
+    
+    box-shadow: 0 0 10px rgb(240, 4, 4);
+}
+
+.swal-modal {
+    font-family: 'Poppins',sans-serif;
+}
+  
+select {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(8, 8, 8, 0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(248, 247, 247, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+
+.formulario {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+button[type="button"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}

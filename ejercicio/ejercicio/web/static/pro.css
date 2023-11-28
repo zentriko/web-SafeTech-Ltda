@@ -1,0 +1,247 @@
+* {
+    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url(imagenes/fondo2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+header {
+    background-color: #161515;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 100px;
+}
+
+.span {
+    color: rgb(199, 23, 10);
+}
+
+.navigation a {
+    color: #ced1da;
+    font-size: 1.2em;
+    text-decoration: none;
+    padding-left: 30px;
+    font-weight:400
+}
+
+    .navigation a:hover {
+        color: rgb(233, 176, 20);
+    }
+
+
+.boton-enlace {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    position: relative;
+    left: 80px;
+}
+
+    .boton-enlace:hover {
+        background-color: #0056b3;
+    }
+
+
+
+.contenedor {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 150px;
+    
+}
+
+    /* Estilos para el t�tulo */
+    .contenedor h1 {
+        font-size: 60px;
+        margin: 0;
+        color: white;
+    }
+
+    /* Estilos para el p�rrafo */
+    .contenedor p {
+        font-size: 19px;
+        margin: 1px 0 0;
+    }
+
+
+.content-all {
+    width: 210px;
+    margin: auto;
+    perspective: 800px;
+    position: relative;
+    margin-top: 50px;
+}
+
+.footer{
+    width: auto;
+    height: auto;
+}
+
+.pol {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    padding: 450px;
+}
+
+.nuestro {
+    width: 380px;
+    height: 390px;
+    position: relative;
+    left: 120px;
+    bottom: 320px;
+}
+
+
+
+
+.nuestro img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 200px;
+    position: relative;
+    left: 95px;
+    bottom: 50px;
+}
+
+.poro {
+    width: auto;
+    height: auto;
+    position: relative;
+    left: 650px;
+    bottom: 320px;
+}
+
+    .poro img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        height: 200px;
+        position: relative;
+        left: 95px;
+        bottom: 37px;
+    }
+
+
+.contenedor-footer {
+   position: relative;
+    top: 30px;
+    left: 7px;
+}
+
+.icon img {
+    width: 90px;
+    height: 80px;
+    position: relative;
+    left: 1750px;
+    top: 100px;
+}
+
+.poro2 {
+    width: auto;
+    height: auto;
+    position: relative;
+    left: 1250px;
+    bottom: 640px;
+}
+
+.ase{
+    position: relative;
+    left: 1500px;
+    top: 90px;
+}
+
+.boton-enlace1 {
+    display: inline-block;
+    padding: 20px 30px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    position: relative;
+    left: 1100px;
+    top: 250px;
+}
+.boton-enlace2 {
+    display: inline-block;
+    padding: 20px 30px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    position: relative;
+    left: 80px;
+    top: 80px;
+}
+.boton-enlace3 {
+    display: inline-block;
+    padding: 20px 30px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    position: relative;
+    left: 80px;
+    top: 180px;
+}
+.boton-enlace4 {
+    display: inline-block;
+    padding: 20px 30px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    position: relative;
+    left: 1094px;
+    top: 120px;
+}
+
+.pr1{
+    position: relative;
+    left: 1255px;
+    top: 261px;
+    color: white;
+}
+
+.pr2{
+    position: relative;
+    left: 230px;
+    top:90px;
+    color: white;
+}
+
+.pr3{
+    position: relative;
+    left: 220px;
+    top: 190px;
+    color: white;
+}
+
+.pr4{
+    position: relative;
+    left: 1320px;
+    top: 130px;
+    color: white;
+}

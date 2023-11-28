@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static '/Index.css'%}" rel="stylesheet" type="text/css" media="screen"/>
+    <title>Safetech</title>
+</head>
+<body>
+    <header>
+        <nav class="navigation">
+            <a href="#inicio">Inicio</a>
+            <a href="iniciar/iniciar.html">Servicio</a>
+            <a href="#Q&A">Q&A</a>
+            <a href="contacts.html">Contacto</a>
+            <a href="#contacts1">¿Quienes somos?</a>
+        </nav>
+        <a href="/iniciar/iniciar.html" class="boton-enlace">Iniciar sesión</a>
+    </header>
+
+    <div class="contenedor">
+        <h1>SafeTech Ltda.</h1><br>
+        <p>La seguridad de tus empleados es nuestra misión</p>
+    </div>
+    <div class="content-all">
+        <div class="content-carrousel">
+            <figure><img src="{% static 'imagenes/img4.jpg' %}"></figure>
+            <figure><img src="{% static 'imagenes/img2.jpg' %}"></figure>
+            <figure><img src="{% static 'imagenes/img3.jpg' %}"></figure>
+            <figure><img src="{% static 'imagenes/img.jpg' %}"></figure>
+            <figure><img src=""></figure>
+            <figure><img src=""></figure>
+            <figure><img src=""></figure>
+            <figure><img src=""></figure>
+            <figure><img src="{% static 'imagenes/img4.jpg' %}"></figure>
+            <figure><img src="{% static 'imagenes/img.jpg' %}"></figure>
+            
+        </div>
+    </div>
+
+    <section class="pol">
+        <div>
+            <h2>Nuestros Profesionales</h2>
+        </div>
+    </section>
+
+    <section class="nuestro">
+        <div class="img">
+            <img src="{% static 'imagenes/e.png' %}" alt="">
+            <p>
+                Diego Muñoz <br>
+                <br>
+                -Desarrollo de Sofware <br>
+                -Codificar, Diseñar y Realizar Pruebas
+                <br>
+                desarrollador de software con experiencia significativa en el desarrollo web utilizando tecnologías <br>
+                como React.js y Node.js. Tiene conocimientos en bases de datos como Oracle SQl y MySQL, así como en herramientas <br>
+                 de control de versiones como Git. Además, está familiarizado con metodologías ágiles, como Scrum. <br>
+            </p>
+        </div>
+
+        <div class="poro">
+            <img src="{% static 'imagenes/e.png' %}" alt="">
+            <p>
+                Cristobal Arroyo Diaz <br>
+                <br>
+                -Analista de sistemas <br>
+                -Contruir y Modelar la base de datos y Documentar <br>
+                <br>
+                desarrollador de software con experiencia significativa en el desarrollo web utilizando tecnologías <br>
+                como React.js y Node.js. Tiene conocimientos en bases de datos como Oracle SQl y MySQL, así como en herramientas <br>
+                 de control de versiones como Git. Además, está familiarizado con metodologías ágiles, como Scrum. <br>
+
+            </p>
+        </div>
+        <div class="poro2">
+            <img src="{% static 'imagenes/e.png' %}" alt="">
+            <p>
+                Cristian Cuevas Huerta <br>
+                <br>
+                -gerente de Proyecto <br>
+                -Planificar,Cordinar y Supervisar <br>
+                <br>
+                capacidad excepcional para resolver problemas y su enfoque orientado a resultados. Demuestra habilidades <br>
+                 de comunicación efectiva y disfruta trabajando en equipo, liderando proyectos y colaborando estrechamente <br>
+                  con equipos multidisciplinarios. <br>
+            </p>
+        </div>
+        
+    </section>
+
+    <div class="icon">
+        <img src="{% static 'imagenes/rede.png' %}" alt="">
+    </div>
+    
+    <footer>
+        <div class="contenedor-footer">
+            <div class="content-foo">
+                <p>Todos los derechos Reservados © : SafeTech Ltda.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("a[href='#contacts1']").addEventListener("click", function(event) {
+                event.preventDefault();
+                const section = document.querySelector(".pol");
+                section.scrollIntoView({ behavior: "smooth" });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("a[href='#inicio']").addEventListener("click", function(event) {
+                event.preventDefault();
+                const section = document.querySelector(".contenedor");
+                section.scrollIntoView({ behavior: "smooth" });
+            });
+        });
+    </script>
+</body>
+</html>

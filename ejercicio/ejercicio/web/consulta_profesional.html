@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static '/consulta_profesional.css'%}" rel="stylesheet" type="text/css" media="screen"/>
+    <title>Consulta de Profesional</title>
+</head>
+<body>
+    <h1>Consulta de Profesional</h1>
+    <table class="styled-table">
+        <thead>
+            <tr>
+              
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Especialidad</th>
+                <th>Usuario</th>
+                <th>Contrseña</th>
+                
+             
+            </tr>
+        </thead>
+        <tbody>
+            {% for profesional in profesional %}
+            <tr>
+                <td>{{ profesional.nombre }}</td>
+                <td>{{ profesional.apellido }}</td>
+                <td>{{ profesional.especialidad }}</td>
+                <td>{{ profesional.usuario }}</td>
+                <td>{{ profesional.contrasena }}</td>
+                <td><a href="{% url 'eliminar_profesional' profesional.id_pro %}"class='boton-eliminar'>Eliminar</a></td>
+                
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button id="mostrar-formulario"class='boton-agregar'>Agregar Profesional</button>
+
+    
+    <form id="formulario-agregar" class="formulario" method="post" action="{% url 'agregar_profesional' %}" style="display: none;">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+        </div>
+        <div class="form-group">
+            <label for="especialidad">Especialidad:</label>
+            <input type="text" id="especialidad" name="especialidad" placeholder="especialidad" required>
+        </div>
+        <div class="form-group">
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
+        </div>
+        <div class="form-group">
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+        </div>
+        <button type="submit">Agregar Profesional</button>
+        <button type="button" id="botonVolver">Volver</button>
+    </form>
+    
+    <script>
+        
+        const botonMostrarFormulario = document.getElementById('mostrar-formulario');
+        const botonVolver = document.getElementById('botonVolver');
+        const formularioAgregar = document.getElementById('formulario-agregar');
+
+        // Agrega un evento de clic al botón para mostrar/ocultar el formulario
+        botonMostrarFormulario.addEventListener('click', () => {
+            
+            if (formularioAgregar.style.display === 'none' || formularioAgregar.style.display === '') {
+                formularioAgregar.style.display = 'block';
+            } else {
+                formularioAgregar.style.display = 'none';
+            }
+            botonVolver.addEventListener('click', () => {
+        formularioAgregar.style.display = 'none';
+    });
+        });
+    </script>
+</body>
+</html>

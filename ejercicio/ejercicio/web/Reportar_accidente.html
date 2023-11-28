@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Reporte de Accidente</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="{% static 'reportar_accidente.css' %}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  
+   
+   
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    
+        
+    <form action="{% url 'reporte_accidente' %}" method="POST" id="form" novalidate>
+        {% csrf_token %}
+        <h1>Reportar Accidente</h1>
+    
+        <input type="hidden" name="cliente_username" id="cliente_username">
+    
+        <label for="numero_reporte">Numero de Reporte</label>
+        <input type="number" name="numero" id="numero">
+        <span class="invalid-input"></span>
+    
+
+        <label for="titulo">nombre_empresa</label>
+        <input type="text" name="nombre_empresa" id="nombre_empresa">
+        <span class="invalid-input"></span>
+    
+        <label for="tipo">Tipo</label>
+        <input type="text" name="tipo" id="tipo">
+        <span class="invalid-input"></span>
+    
+        <label for="descripcion">Descripción</label>
+        <input type="text" name="descripcion" id="descripcion">
+        <span class="invalid-input"></span>
+    
+        <label for="fecha_creacion">Fecha de Creación</label>
+        <input type="date" name="fecha_creacion" id="fecha_creacion">
+        <span class="invalid-input"></span>
+    
+        <div class="check">
+            <label>
+                <input type="checkbox" id="miCheckbox" name="miCheckbox">
+            </label>
+        </div>
+    
+        <div class="lad">
+            <p>He leído los términos y condiciones.</p>
+        </div>
+    
+        <button type="submit" id="boton-registrarse">Solicitar</button>
+    
+        <p class="warnings" id="warnings"></p>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var clienteUsername = localStorage.getItem("Nombre_Usuario");
+            console.log("Nombre de usuario del cliente:", clienteUsername);
+            if (clienteUsername) {
+                document.getElementById("cliente_username").value = clienteUsername;
+            } else {
+                console.error("¡Error! Nombre de usuario del cliente no encontrado en el localStorage.");
+            }
+        
+            var form = document.getElementById("form");
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();
+        
+                
+                setTimeout(function() {
+                    
+        
+                    // Simulación de éxito (para demostración)
+                    Swal.fire({
+                        title: "Reporte exitoso",
+                        text: "¡Tu reporte ha sido completado con éxito!",
+                        icon: "success",
+                        timer: 1500, // Duración en milisegundos
+                        showConfirmButton: false // Oculta el botón "OK"
+                    }).then(() => {
+                        // Redirigir a la página deseada después de cerrar el SweetAlert
+                        form.submit(); // Esto enviará el formulario al servidor
+                    });
+        
+                    // Si ocurrió un error, puedes mostrar un mensaje de error usando Swal.fire()
+                    
+                }, 1000); // Tiempo de espera simulado (1 segundo)
+            });
+        });
+        </script>
+
+</body>
+</html>

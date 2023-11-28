@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Revisar Cheklists</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="{% static 'cheklist.css' %}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <form action="{% url 'planificar_visita' %}" method="POST" id="form" novalidate>
+        {% csrf_token %}
+        <h1>Cheklist de Empresas:</h1>
+        <label for="Revisar_cheklist">Revisar Checklist:</label>
+        <select id="Revisar_cheklist" name="revisar_cheklist">
+            <option value="op">Seleccione una opcion</option>
+            <option value="opcion1">empresa minera</option>
+            <option value="opcion2">empresa Industrial</option>
+            <option value="opcion3">empresa Construcción</option>
+        </select>
+
+        <div id="inventario_opcion1" style="display: none;">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID_visita</th>
+                        <th>descripcion</th>
+                        <th>tipo_empresa</th>
+                       
+                 
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for checklist in checklist %}
+                    <tr>
+                        <td>{{ checklist.visita.visita_id }}</td>
+                        <td>{{ checklist.descripcion }}</td>
+                        <td>{{ checklist.tipo_empresa}}</td>
+                        
+                
+                        <td>{{ checklist.detalle}}</td>
+        
+                    
+                    
+                    </tr>
+                    {% endfor %}
+                </tbody>
+               
+            </table>
+        </div>
+
+        <div id="inventario_opcion2" style="display: none;">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID_visita</th>
+                        <th>descripcion</th>
+                        <th>tipo_empresa</th>
+                        <th>ruta_documento</th>>
+                 
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for checklist in checklist %}
+                    <tr>
+                        <td>{{ checklist.id_visita }}</td>
+                        <td>{{ checklist.descripcion }}</td>
+                        <td>{{ checklist.tipo_empresa}}</td>
+                        <td>{{ checklist.ruta_documento }}</td>
+                
+                        <td>{{ checklist.detalle}}</td>
+        
+
+                    
+                    </tr>
+                    {% endfor %}
+                </tbody>
+              
+            </table>
+        </div>
+
+        <div id="inventario_opcion3" style="display: none;">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID_visita</th>
+                        <th>descripcion</th>
+                        <th>tipo_empresa</th>
+                        <th>ruta_documento</th>>
+                 
+                 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for checklist in checklist %}
+                    <tr>
+                        <td>{{ checklist.id_visita }}</td>
+                        <td>{{ checklist.descripcion }}</td>
+                        <td>{{ checklist.tipo_empresa}}</td>
+                        <td>{{ checklist.ruta_documento }}</td>
+                
+                        <td>{{ checklist.detalle}}</td>
+        
+                       
+                     
+                    </tr>
+                    {% endfor %}
+                </tbody>
+              
+            </table>
+        </div>
+
+
+
+
+
+        <script>
+            var select = document.getElementById("Revisar_cheklist");
+            var inventarioOpcion1 = document.getElementById("inventario_opcion1");
+            var inventarioOpcion2 = document.getElementById("inventario_opcion2");
+            var inventarioOpcion3 = document.getElementById("inventario_opcion3");
+            
+    
+            select.addEventListener("change", function () {
+                if (select.value === "opcion1") {
+                    inventarioOpcion1.style.display = "block";
+                    inventarioOpcion2.style.display = "none";
+                    inventarioOpcion3.style.display = "none";
+                } else if (select.value === "opcion2") {
+                    inventarioOpcion1.style.display = "none";
+                    inventarioOpcion2.style.display = "block";
+                    inventarioOpcion3.style.display = "none";
+                } else {
+                    inventarioOpcion1.style.display = "none";
+                    inventarioOpcion2.style.display = "none";
+                    inventarioOpcion3.style.display = "block";
+                }
+            });
+    
+            var botonMostrarFormularioChecklist = document.getElementById('mostrar-formulario-checklist');
+            var botonVolver = document.getElementById('botonVolver');
+    
+            botonMostrarFormularioChecklist.addEventListener('click', function(event) {
+                event.preventDefault();
+                formularioChecklist.style.display = 'block';
+            });
+    
+            botonVolver.addEventListener('click', function() {
+                formularioChecklist.style.display = 'none';
+            });
+        </script>
+       
+</body>
+</html>

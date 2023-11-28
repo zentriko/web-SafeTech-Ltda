@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static '/pro.css'%}" rel="stylesheet" type="text/css" media="screen"/>
+    <title>Safetech</title>
+</head>
+<body>
+    <header>
+        <nav class="navigation">
+            <a href="/datosreportes">ver informes y Reportes</a>
+            
+            <a href="/RevisarCheklist">Revisar Checklist</a>
+            <a href="#Q&A"></a>
+            <a href="contacts.html"></a>
+
+        </nav>
+        <a href="/iniciar/iniciar.html" id="id_cerrar" class="boton-enlace">Cerrar sesión</a>
+    </header>
+
+    <div class="contenedor">
+        <h1>Profesional</h1><br>
+
+    </div>
+    <section class="nuestro">
+    <div class="boton1">
+        <a href="/crear_caso_asesoria.html" class="boton-enlace1">Crear caso de asesoria</a>
+        <div class="pr1">
+        <p>
+            Con este botón, puedes solicitar asesoría personalizada para abordar problemas
+             de seguridad específicos o para enfrentar situaciones de fiscalización. Nuestros
+              expertos estarán a tu disposición para brindarte orientación detallada y
+              soluciones efectivas. Crear un caso de asesoría es tu acceso directo a un 
+              apoyo experto y a medidas de seguridad adaptadas a tus necesidades.
+        </p>
+        </div>
+    </div>
+    <div class="boton2">
+        <a href="/crear_capacitacion.html" class="boton-enlace2">Crear Capacitacion</a>
+        <div class="pr2">
+            <p>
+                Este botón te lleva a nuestro exclusivo programa de capacitación.
+                Descubre sesiones educativas dirigidas por profesionales, diseñadas
+                 para mantener a tu equipo actualizado con las últimas normativas y prácticas de
+                  seguridad en el lugar de trabajo. Invertir en la capacitación de tus empleados es 
+                  invertir en un entorno laboral más seguro y productivo.
+            </p>
+            </div>
+    </div>
+    <div class="boton3">
+        <a href="/planificar_visita.html" class="boton-enlace3">Planificar Visita</a>
+        <div class="pr3">
+            <p>
+                Este botón te permite coordinar visitas a las instalaciones de tu empresa 
+                con nuestros expertos en seguridad. Durante estas visitas, nuestros 
+                profesionales evaluarán las condiciones de seguridad, proporcionarán recomendaciones
+                 personalizadas y ayudarán a implementar mejoras. Planificar una visita es el primer paso
+                  hacia un ambiente de trabajo más seguro y conforme con las regulaciones.
+            </p>
+            </div>
+    </div>
+    <div class="boton4">
+        <a href="/ingresar_ac_mejora.html" class="boton-enlace4">Ingresar actividad de mejora</a>
+        <div class="pr4">
+            <p>
+                Este botón te permite registrar las acciones específicas que planeas
+                 implementar para mejorar la seguridad en tu empresa. Desde pequeños ajustes
+                  hasta cambios significativos, cada actividad de mejora contribuye a un ambiente
+                   laboral más seguro. Ingresa tus iniciativas aquí y da un paso más hacia la prevención
+                    de riesgos y la seguridad laboral.
+            </p>
+            </div>
+    </div>
+
+
+    <footer>
+        <div class="contenedor-footer">
+            <div class="content-foo">
+                <p></p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.getElementById("id_cerrar").addEventListener("click", function(event) {
+             // Elimina el elemento del localStorage correspondiente a la clave "Nombre_Usuario"
+             localStorage.clear();
+         });
+     </script> 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("a[href='#contacts1']").addEventListener("click", function(event) {
+                event.preventDefault();
+                const section = document.querySelector(".pol");
+                section.scrollIntoView({ behavior: "smooth" });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("a[href='#inicio']").addEventListener("click", function(event) {
+                event.preventDefault();
+                const section = document.querySelector(".contenedor");
+                section.scrollIntoView({ behavior: "smooth" });
+            });
+        });
+    </script>
+    
+</body>
+</html>

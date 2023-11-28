@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static '/consulta_cliente.css'%}" rel="stylesheet" type="text/css" media="screen"/>
+    <title>Consulta de Clientes</title>
+</head>
+<body>
+    <h1>Consulta de Clientes</h1>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Usuario</th>
+                <th>Correo</th>
+                <th>Contrseña</th>
+                <th>Fecha_registro</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.id_cliente }}</td>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.apellido }}</td>
+                <td>{{ cliente.usuario }}</td>
+                <td>{{cliente.correo}}</td>
+                <td>{{ cliente.contrasena}}</td>
+                <td>{{ cliente.fecha_registro }}</td>
+                <td><a href="{% url 'eliminar_cliente' cliente.id_cliente %}"class='boton-eliminar'>Eliminar</a></td>
+           
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button id="mostrar-formulario"class='boton-agregar'>Agregar Cliente</button>
+
+    
+    <form id="formulario-agregar" class="formulario" method="post" action="{% url 'agregar_cliente' %}" style="display: none;">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" placeholder="Correo" required>
+        </div>
+        <div class="form-group">
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
+        </div>
+        <div class="form-group">
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+        </div>
+        <button type="submit">Agregar Cliente</button>
+        <button type="button" id="botonVolver">Volver</button>
+    </form>
+    
+    <script>
+        // Captura el botón y el formulario
+        const botonMostrarFormulario = document.getElementById('mostrar-formulario');
+        const botonVolver = document.getElementById('botonVolver');
+        const formularioAgregar = document.getElementById('formulario-agregar');
+
+        // Agrega un evento de clic al botón para mostrar/ocultar el formulario
+        botonMostrarFormulario.addEventListener('click', () => {
+            // Si el formulario está oculto, muéstralo; de lo contrario, ocúltalo
+            if (formularioAgregar.style.display === 'none' || formularioAgregar.style.display === '') {
+                formularioAgregar.style.display = 'block';
+            } else {
+                formularioAgregar.style.display = 'none';
+            }
+            botonVolver.addEventListener('click', () => {
+        formularioAgregar.style.display = 'none';
+    });
+        });
+    </script>
+</body>
+</html>

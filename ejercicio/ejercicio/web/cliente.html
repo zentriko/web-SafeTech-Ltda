@@ -1,0 +1,261 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static '/clien.css'%}" rel="stylesheet" type="text/css" media="screen"/>
+    <title>Safetech</title>
+   
+</head>
+<body>
+    <header>
+        <nav class="navigation">
+            <a href="iniciar/iniciar.html">ver informes y Reportes</a>
+            <a href="#Q&A">Revisar actividades</a>
+            <a href="contacts.html">Revisar visitas</a>
+
+        </nav>
+        <a href="/perfil_cliente.html"  class="boton-cuenta">Tu cuenta</a>
+        <a href="/iniciar/iniciar.html" id = id_cerrar class="boton-enlace">Cerrar sesión</a>
+    </header>
+
+    <div class="contenedor">
+        <h1>Cliente</h1><br>
+        <button id="mostrar-formulario"class='boton-agregar'>Pagar Suscripcion</button>
+
+    
+    <form id="formulario-agregar" class="formulario" method="post" action="{% url 'agregar_contrato' %}" style="display: none;">
+        {% csrf_token %}
+        
+        
+        <input type="hidden" name="cliente_username" id="cliente_username"> <!-- Campo oculto para el nombre de usuario del cliente -->
+        
+        <div class="form-group">
+            <label for="nombre">Nombre usuario:</label>
+            <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="nombre_usuario" required>
+        </div>
+        <div class="form-group">
+            <label for="nombre_empresa">Nombre Empresa:</label>
+            <input type="text" id="nombre_empresa" name="nombre_empresa" placeholder="nombre_empresa" required>
+        </div>
+        <div class="form-group">
+            <label for="nombre_empresa">Tipo Empresa:</label>
+            <input type="text" id="tipo_empresa" name="tipo_empresa" placeholder="tipo_empresa" required>
+        </div>
+
+        <div class="form-group">
+            <label for="correo">Correo:</label>
+            <input type="text" id="correo" name="correo" placeholder="correo" required>
+        </div>
+
+        <div class="form-group">
+            <label for="apellido">Tipo Suscripcion:</label>
+            <input type="text" id="tipo_suscripcion" name="tipo_suscripcion" placeholder="tipo_suscripcion" required>
+        </div>
+
+        <div class="form-group">
+            <label for="apellido">Monto</label>
+            <input type="text" id="monto" name="monto" placeholder="monto"  required readonly value="20000">
+        </div>
+
+        <div class="form-group">
+            <label for="fecha_inicio">Fecha inicio</label>
+            <input type="date" id="fecha_inicio" name="fecha_inicio" placeholder="date" required>
+        </div>
+
+        <div class="form-group">
+            <label for="fecha_termino">Fecha Termino</label>
+            <input type="date" id="fecha_termino" name="fecha_termino" placeholder="date" required readonly>
+        </div>
+
+        
+        <button type="submit">Suscribirse</button>
+        <button type="button" id="botonVolver">Volver</button>
+    </form>
+    </div>
+    <div class="contenedor2">
+        <h1>¿Necesitas asesoria Profesional sobre Prevesión de Riesgos?</h1><br>
+        <p>La prevención de riesgos laborales es fundamental para garantizar la seguridad y bienestar de los trabajadores en cualquier empresa. Para llevar<br>
+             a cabo esta planificación de manera efectiva, se requiere un proceso que consta de varias etapas. La primera de ellas es la evaluación <br>
+             inicial de los riesgos inherentes a los puestos de trabajo existentes en la empresa.<br></p>
+    </div>
+
+    <button id="solicitar-asesoria" disabled>Solicitar asesoría</button>
+
+
+    <div class="contenedor3">
+        <h1>¿Haz presenciado algun accidente?</h1><br>
+        <p>La realidad es que los accidentes laborales pueden ocurrir en cualquier entorno de trabajo. Presenciar un accidente puede ser una <br>
+            experiencia impactante y estresante. En estos momentos, es crucial mantener la calma y actuar de manera rápida y <br>
+            efectiva para brindar ayuda a la persona afectada y garantizar la seguridad de los demás.<br></p>
+    </div>
+    <button id="reportar-accidente" disabled>Reportar accidente</button>
+    
+
+
+    <footer>
+        <div class="contenedor-footer">
+            <div class="content-foo">
+                <p></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const botonMostrarFormulario = document.getElementById('mostrar-formulario');
+        const botonVolver = document.getElementById('botonVolver');
+        const formularioAgregar = document.getElementById('formulario-agregar');
+
+        botonMostrarFormulario.addEventListener('click', () => {
+            if (formularioAgregar.style.display === 'none' || formularioAgregar.style.display === '') {
+                formularioAgregar.style.display = 'block';
+            } else {
+                formularioAgregar.style.display = 'none';
+            }
+            botonVolver.addEventListener('click', () => {
+                formularioAgregar.style.display = 'none';
+            });
+        });
+
+        document.getElementById("formulario-agregar").addEventListener("submit", function (event) {
+            // Abrir la ventana de PayPal
+            var ventanaPayPal = window.open("https://www.sandbox.paypal.com/cgi-bin/webscr?business=sb-w1bms28375691@business.example.com&cmd=_xclick&currency_code=USD&item_name=Asesoría - Tipo de Asesoría&amount=20.00&custom=datos_adicionales_personalizados&return=/solicitar_asesoria.html&cancel_return=/solicitar_asesoria.html", "PayPalWindow", "width=600,height=400");
+
+            // Esperar hasta que la ventana de PayPal se cierre
+            var intervalo = setInterval(function () {
+                if (ventanaPayPal.closed) {
+                    clearInterval(intervalo);
+
+                    //  envío del formulario
+                    formularioAgregar.submit();
+                }
+            }, 1000);  
+          
+          
+            event.preventDefault();
+        });
+    </script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Obtener el valor del formulario completado desde el localStorage
+        var formularioCompletado = localStorage.getItem("formulario_completado");
+
+        // Obtener el nombre de usuario del localStorage
+        var clienteUsername = localStorage.getItem("Nombre_Usuario");
+        
+        var ventanaPayPal = window.open("https://www.sandbox.paypal.com/cgi-bin/webscr?business=sb-w1bms28375691@business.example.com&cmd=_xclick&currency_code=USD&item_name=Asesoría - Tipo de Asesoría&amount=20.00&custom=datos_adicionales_personalizados&return=/solicitar_asesoria.html&cancel_return=/solicitar_asesoria.html", "PayPalWindow", "width=600,height=400");
+
+        
+        event.preventDefault();
+        // Obtener los elementos del formulario
+        const solicitarAsesoria = document.getElementById("solicitar-asesoria");
+        const reportarAccidente = document.getElementById("reportar-accidente");
+
+        // Habilitar o deshabilitar los botones según si el formulario ha sido completado
+        if (formularioCompletado === "true" && clienteUsername) {
+            solicitarAsesoria.disabled = false;
+            reportarAccidente.disabled = false;
+        } else {
+            solicitarAsesoria.disabled = true;
+            reportarAccidente.disabled = true;
+        }
+
+        document.getElementById("reportar-accidente").addEventListener("click", function () {
+            // Redireccionar a la página deseada al hacer clic en el botno
+            window.location.href = "reporte_accidente";
+        });
+
+        document.getElementById("solicitar-asesoria").addEventListener("click", function () {
+            // Redireccionar a la página deseada al hacer clic en el boton
+            window.location.href = "solicitar_asesoria";
+        });
+    });
+
+    // Event listener para el formulario de suscripción
+    document.getElementById("formulario-agregar").addEventListener("submit", function (event) {
+
+        // Obtener el valor del nombre de usuario
+        var clienteUsername = document.getElementById("nombre_usuario").value;
+
+        // Establecer el formulario como completado en el localStorage
+        localStorage.setItem("formulario_completado", "true");
+
+        //  nombre de usuario en el localStorage
+        localStorage.setItem("Nombre_Usuario", clienteUsername);
+
+       
+
+       
+    });
+</script>
+
+
+    
+    <script>
+        document.getElementById("id_cerrar").addEventListener("click", function(event) {
+            // Elimina el elemento del localStorage correspondiente a la clave "Nombre_Usuario"
+            localStorage.clear();
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("a[href='#contacts1']").addEventListener("click", function(event) {
+                event.preventDefault();
+                const section = document.querySelector(".pol");
+                section.scrollIntoView({ behavior: "smooth" });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("a[href='#inicio']").addEventListener("click", function(event) {
+                event.preventDefault();
+                const section = document.querySelector(".contenedor");
+                section.scrollIntoView({ behavior: "smooth" });
+            });
+        });
+    </script>
+<script>
+    // Función para calcular y actualizar la fecha de término
+    function actualizarFechaTermino() {
+        // Obtener el valor de la fecha de inicio
+        var fechaInicio = new Date(document.getElementById("fecha_inicio").value);
+
+        // Validar si se ha seleccionado una fecha de inicio válida
+        if (!isNaN(fechaInicio.getTime())) {
+            // Sumar un mes a la fecha de inicio
+            var fechaTermino = new Date(fechaInicio);
+            fechaTermino.setMonth(fechaTermino.getMonth() + 1);
+
+            // Formatear la fecha de término y establecerla en el campo correspondiente
+            var dd = String(fechaTermino.getDate()).padStart(2, '0');
+            var mm = String(fechaTermino.getMonth() + 1).padStart(2, '0'); // Enero es 0
+            var yyyy = fechaTermino.getFullYear();
+            var fechaTerminoFormateada = yyyy + '-' + mm + '-' + dd;
+
+            document.getElementById("fecha_termino").value = fechaTerminoFormateada;
+        }
+    }
+
+    // Agregar un event listener para escuchar cambios en tiempo real en la fecha de inicio
+    document.getElementById("fecha_inicio").addEventListener("input", actualizarFechaTermino);
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var clienteUsername = localStorage.getItem("Nombre_Usuario");
+        console.log("Nombre de usuario del cliente:", clienteUsername);
+        if (clienteUsername) {
+            document.getElementById("cliente_username").value = clienteUsername;
+        } else {
+            console.error("¡Error! Nombre de usuario del cliente no encontrado en el localStorage.");
+        }
+    });
+</script>
+    
+    
+</body>
+</html>

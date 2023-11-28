@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static '/crear_caso_asesori.css'%}" rel="stylesheet" type="text/css" media="screen"/>
+    <title>Safetech</title>
+</head>
+    <header>
+        <nav class="navigation">
+            <a href="/profesional.html">volver</a>
+            
+
+        </nav>
+        <a href="/perfil_cliente.html" class="boton-cuenta">Tu cuenta</a>
+        <a href="/iniciar/iniciar.html" class="boton-enlace">Cerrar sesión</a>
+    </header>
+    <body>
+        <h1>Asesorias</h1>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    
+                    <th>Cliente</th>
+                    <th>Correo</th>
+                    <th>Detalles</th>
+                    <th>Fecha</th>
+                    <th>tipo_asesoria</th>
+                    <th>ID Cliente</th>
+
+                 
+                </tr>
+            </thead>
+            <tbody>
+                {% for asesoria in asesoria %}
+                <tr>
+                
+                    <td>{{ asesoria.cliente.nombre }}</td>
+                    <td>{{ asesoria.cliente.correo }}</td> 
+                    <td>{{ asesoria.detalle }}</td>
+                    <td>{{ asesoria.fecha_inicio }}</td>
+                    <td>{{ asesoria.tipo_asesoria }}</td>
+                    <td>{{ asesoria.cliente_id }}</td>
+                   
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button id="mostrar-formulario"class='boton-agregar'>Agregar Asesoria</button>
+
+        
+    
+        <!-- Formulario para agregar un nuevo cliente  oculto-->
+        <form id="formulario-agregar" class="formulario" method="post" action="{% url 'agregar_asesoria' %}" style="display: none;">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="detalle">detalle:</label>
+                <input type="text" id="detalle" name="detalle" placeholder="detalle" required>
+            </div>
+            <div class="form-group">
+                <label for="fecha">fecha:</label>
+                <input type="date" id="fecha" name="fecha" placeholder="fecha" required>
+            </div>
+
+            <div class="form-group">
+                <label for="correo">Correo</label>
+                <input type="correo" id="correo" name="correo" placeholder="correo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha">ID cliente</label>
+                <input type="number" id="cliente_id" name="cliente_id" placeholder="cliente_id" required>
+            </div>
+            <div class="form-group">
+                <label for="prioridad">prioridad:</label>
+                <input type="text" id="prioridad" name="prioridad" placeholder="prioridad" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo_asesoria">tipo_asesoria:</label>
+                <input type="text" id="tipo_asesoria" name="tipo_asesoria" placeholder="tipo_asesoria" required>
+            </div>
+            <button type="submit">Ingresar Asesoria</button>
+            <button type="button" id="botonVolver">Volver</button>
+        </form>
+        
+        <script>
+            // Captura el botón y el formulario
+            const botonMostrarFormulario = document.getElementById('mostrar-formulario');
+            const botonVolver = document.getElementById('botonVolver');
+            const formularioAgregar = document.getElementById('formulario-agregar');
+    
+            // Agrega un evento de clic al botón para mostrar/ocultar el formulario
+            botonMostrarFormulario.addEventListener('click', () => {
+                // Si el formulario está oculto, muéstralo; de lo contrario, ocúltalo
+                if (formularioAgregar.style.display === 'none' || formularioAgregar.style.display === '') {
+                    formularioAgregar.style.display = 'block';
+                } else {
+                    formularioAgregar.style.display = 'none';
+                }
+                botonVolver.addEventListener('click', () => {
+            formularioAgregar.style.display = 'none';
+        });
+            });
+        </script>
+    </body>
+  
+<script>const botonEnviarAsesoria = document.getElementById('enviarAsesoria');
+
+ 
+    botonEnviarAsesoria.addEventListener('click', () => {
+      
+        const numeroTelefono = '1234567890';
+        
+     
+        const mensaje = 'Hola, necesito asesoría.';
+    
+        const enlaceWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${encodeURIComponent(mensaje)}`;
+    
+       
+        window.open(enlaceWhatsApp);
+    });</script>
+    
+
+</html>

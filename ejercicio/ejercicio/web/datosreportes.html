@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static '/consulta_cliente.css'%}" rel="stylesheet" type="text/css" media="screen"/>
+    <title>Reporte de Clientes</title>
+</head>
+<body>
+    <h1>Reportes de Clientes</h1>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Empresa</th>
+                <th>Numero de Accidente</th>
+                <th>Tipo de empresa</th>
+                <th>Descripcion</th>
+                <th>fecha_creacion</th>
+              
+            </tr>
+        </thead>
+        <tbody>
+            {% for reporte in reporte %}
+            <tr>
+                <td>{{ reporte.id_reporte }}</td>
+                <td>{{ reporte.nombre_empresa }}</td>
+                <td>{{ reporte.numero }}</td>
+                <td>{{ reporte.titulo }}</td>
+                <td>{{ reporte.tipo }}</td>
+                <td>{{reporte.descripcion}}</td>
+                <td>{{ reporte.fecha_creacion}}</td>
+              
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    
+
+</body>
+</html>

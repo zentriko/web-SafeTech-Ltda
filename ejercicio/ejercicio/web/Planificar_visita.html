@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Solicitar Visita a Terreno</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="{% static 'planificar_visia.css' %}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <form action="{% url 'planificar_visit' %}" method="POST" id="form" novalidate>
+        {% csrf_token %}
+        <h1>Solicita tu Visita</h1>
+        <label for="planificar_visita">Tipo de Visita:</label>
+        <select id="planificar_visita" name="tipo_visita">
+            <option value="op">Seleccione una opcion</option>
+            <option value="opcion1">Solicitar Visita</option>
+            <option value="opcion2">Revisar Visitas</option>
+        </select>
+
+        <div id="inventario_opcion1" style="display: none;">
+            <!-- Contenido del inventario para la Opción 1 -->
+       
+            <label for="">Fecha </label>
+            <input type="date" name="fecha_visita" id="fecha"><span class="invalid-input"></span>
+            <label for="">Resultado</label>
+            <input type="text" name="resultado" id="resultado"><span class="invalid-input"></span>
+
+            <label for="correo">Correo</label>
+            <input type="correo" id="correo" name="correo" placeholder="correo" required>
+           
+            <button type="submit" id="boton-registrarse">Solicitar</button>
+        </div>
+        
+        <div id="inventario_opcion2" style="display: none;">
+            <!-- Contenido del inventario para la Opción 2 -->
+           
+            <h1>Consulta de Visitas</h1>
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID_visita</th>
+                        <th>Fecha_registro</th>
+                        <th>Resultado</th>
+                        <th>Asesoria_id</th>>
+                        <th>Detalle</th>
+                 
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for visita in visita %}
+                    <tr>
+                        <td>{{ visita.id_visita }}</td>
+                        <td>{{ visita.fecha_visita }}</td>
+                        <td>{{ visita.resultado }}</td>
+                        <td>{{ visita.asesoria_id }}</td>
+                        
+                        <td>{{ visita.detalle}}</td>
+        
+                        <td><a href="/perfil_cliente.html" id="mostrar-formulario-checklist" class="boton-enlace">Crear Checklist</a></td>
+                       
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                
+            </table>
+        </div>
+    </form>
+
+  
+    <script>
+        var select = document.getElementById("planificar_visita");
+        var inventarioOpcion1 = document.getElementById("inventario_opcion1");
+        var inventarioOpcion2 = document.getElementById("inventario_opcion2");
+        var formularioChecklist = document.getElementById('formulariochecklist');
+
+        select.addEventListener("change", function () {
+            if (select.value === "opcion1") {
+                inventarioOpcion1.style.display = "block";
+                inventarioOpcion2.style.display = "none";
+                formularioChecklist.style.display = "none"; // Oculta el formulario de checklist si se muestra
+            } else if (select.value === "opcion2") {
+                inventarioOpcion1.style.display = "none";
+                inventarioOpcion2.style.display = "block";
+                formularioChecklist.style.display = "none"; 
+            } else {
+                inventarioOpcion1.style.display = "none";
+                inventarioOpcion2.style.display = "none";
+                formularioChecklist.style.display = "none"; 
+            }
+        });
+
+       
+    </script>
+</body>
+</html>

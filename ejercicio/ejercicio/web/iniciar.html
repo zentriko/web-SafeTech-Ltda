@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <title>Login</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="{% static '/iniciar.css' %}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    
+   
+   
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form action="{% url 'login_view' %}" class="log" method="post" id="form" novalidate>
+        {% csrf_token %}
+    {{ error_message }}
+        <h3>¡Te damos la bienvenida a SafeTech!</h3>
+        <img src="{% static 'imagenes/e.png' %}">
+
+       
+        <label for="">Nombre de usuario</label>
+        <input type="text" name="usuario" id="usuario" ><span class="invalid-input"></span>
+        
+
+        <label for="">Password</label>
+        <input type="password" name="contrasena" id="contrasena" ><span class="invalid-input"></span>
+
+        <p>Por favor prueba una Contraseña de al menos 8 caracteres </p>
+                <div class="check">
+                    <label>
+                        <input type="checkbox" id="miCheckbox" name="miCheckbox">
+                    </label>
+                </div>
+                
+                </div>
+                <div class="lad">
+                    <p>He leido los terminos y condiciones.</p>
+                </div>
+                
+         
+                <button type="submit"id="boton-registrarse">iniciar sesión</button>
+
+        
+
+            <p class="warnings" id="warnings"></p>
+
+            <div class="regis">
+                <a href="registro/" class="botonn-ingresar">Registrate</a>
+            </div>
+
+    </form>
+    <script src="{% static 'logint.js' %}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script> 
+       document.getElementById("form").addEventListener("submit", function(event) {
+    const userValue = document.getElementById("usuario").value;
+    localStorage.setItem('Nombre_Usuario', userValue);
+});
+    </script>
+    
+    <script>
+        $(document).ready(function () {
+            $("#form").on("submit", function (e) {
+                e.preventDefault();
+                
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'login_view' %}",
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        if (data.error) {
+                            
+                            swal("Error", data.message, "error");
+                        } else {
+                            // Redirige al usuario en caso de éxito
+                            
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+    
+
+</body>
+</html>
